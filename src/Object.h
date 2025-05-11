@@ -13,7 +13,7 @@ public:
   std::vector<sf::Vector3f> vertices;
   std::vector<sf::Vector3f> normals;
   std::vector<sf::Vector2f> tex_coords;
-  std::vector<std::array<sf::Vector3i, 3>> faces;
+  std::vector<std::array<std::array<int, 3>, 3>> faces;
 
   Object(std::string filename);
 };

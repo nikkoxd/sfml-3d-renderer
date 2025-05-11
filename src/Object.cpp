@@ -47,7 +47,7 @@ Object::Object(std::string filename)
       else if (prefix == "f")
       {
         std::array<std::string, 3> string_groups;
-        std::array<sf::Vector3i, 3> face;
+        std::array<std::array<int, 3>, 3> face;
         ss >> string_groups[0] >> string_groups[1] >> string_groups[2];
 
         for (int i = 0; i < 3; i++)
@@ -55,10 +55,10 @@ Object::Object(std::string filename)
           std::string string_group = string_groups[i];
           std::stringstream group_ss(string_group);
 
-          sf::Vector3i values;
+          std::array<int, 3> values;
           char slash;
 
-          group_ss >> values.x >> slash >> values.y >> slash >> values.z;
+          group_ss >> values[0] >> slash >> values[1] >> slash >> values[2];
           face[i] = values;
         }
 
