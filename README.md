@@ -1,6 +1,6 @@
 ## Требования
 
-- Cmake >= 3.28
+- [Cmake](https://cmake.org/download/) >= 3.28
 
 ## Компиляция
 
