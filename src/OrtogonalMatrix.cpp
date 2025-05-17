@@ -1,12 +1,13 @@
 #include "OrtogonalMatrix.h"
 
-OrtogonalMatrix::OrtogonalMatrix(float l, float r, float b, float t, float n,
-                                 float f)
-    : values({
-          std::array<float, 4>{2.0f / (r - l), 0, 0, -(r + l) / (r - l)},
-          std::array<float, 4>{0, 2.0f / (t - b), 0, -(t + b) / (t - b)},
-          std::array<float, 4>{0, 0, -2.0f / (f - n), -(f + n) / (f - n)},
+OrtogonalMatrix::OrtogonalMatrix(float left, float right, float bottom,
+                                 float top, float near, float far)
+    : Matrix({
+          std::array<float, 4>{2.0f / (right - left), 0, 0,
+                               -(right + left) / (right - left)},
+          std::array<float, 4>{0, 2.0f / (top - bottom), 0,
+                               -(top + bottom) / (top - bottom)},
+          std::array<float, 4>{0, 0, -2.0f / (far - near),
+                               -(far + near) / (far - near)},
           std::array<float, 4>{0, 0, 0, 1},
       }) {};
-
-std::array<float, 4> OrtogonalMatrix::operator[](int i) { return values[i]; };

@@ -15,8 +15,11 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(main 
   src/main.cpp
-  src/Window.cpp
+  src/Matrix.cpp
   src/Object.cpp
+  src/OrtogonalMatrix.cpp
+  src/ViewportMatrix.cpp
+  src/Window.cpp
 )
 
 add_custom_target(copy_assets

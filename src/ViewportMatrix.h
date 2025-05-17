@@ -1,16 +1,14 @@
 #ifndef VIEWPORTMATRIX_H
 #define VIEWPORTMATRIX_H
 
-#include <array>
+#include "Matrix.h"
 
-class ViewportMatrix
+class ViewportMatrix : Matrix
 {
-  float w, h, x, y, depth;
-  std::array<std::array<float, 4>, 4> values;
+  float width, height, x, y, depth;
 
 public:
-  ViewportMatrix(float w, float h, float x, float y, float depth);
-  std::array<float, 4> operator[](int i);
+  ViewportMatrix(float width, float height, float x, float y, float depth);
 };
 
 #endif

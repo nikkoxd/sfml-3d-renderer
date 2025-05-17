@@ -1,16 +1,15 @@
 #ifndef ORTOGONALMATRIX_H
 #define ORTOGONALMATRIX_H
 
-#include <array>
+#include "Matrix.h"
 
-class OrtogonalMatrix
+class OrtogonalMatrix : Matrix
 {
-  float l, r, b, t, n, f;
-  std::array<std::array<float, 4>, 4> values;
+  float left, right, bottom, top, near, far;
 
 public:
-  OrtogonalMatrix(float l, float r, float b, float t, float n, float f);
-  std::array<float, 4> operator[](int i);
+  OrtogonalMatrix(float left, float right, float bottom, float top, float near,
+                  float far);
 };
 
 #endif
