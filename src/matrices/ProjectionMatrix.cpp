@@ -1,6 +1,6 @@
-#include "OrtogonalMatrix.h"
+#include "ProjectionMatrix.h"
 
-OrtogonalMatrix::OrtogonalMatrix(float left, float right, float bottom,
+ProjectionMatrix::ProjectionMatrix(float left, float right, float bottom,
                                  float top, float near, float far)
     : Matrix({
           std::array<float, 4>{2.0f / (right - left), 0, 0,

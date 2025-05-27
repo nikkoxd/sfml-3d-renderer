@@ -1,5 +1,9 @@
 #include "Matrix.h"
 
+Matrix::Matrix() {
+  values = std::array<std::array<float, 4>, 4>{0, 0, 0, 0};
+}
+
 Matrix::Matrix(std::array<std::array<float, 4>, 4> values) : values(values) {}
 
 std::array<float, 4> Matrix::operator[](int i) { return values[i]; };
