@@ -25,14 +25,14 @@ Object::Object(std::string filename)
       ss >> prefix;
       if (prefix == "v")
       {
-        sf::Vector3f vertex;
+        Vector3f vertex;
         ss >> vertex.x >> vertex.y >> vertex.z;
 
         vertices.push_back(vertex);
       }
       else if (prefix == "vn")
       {
-        sf::Vector3f normal;
+        Vector3f normal;
         ss >> normal.x >> normal.y >> normal.z;
 
         normals.push_back(normal);

@@ -6,10 +6,10 @@
 
 class LookAtMatrix : public Matrix
 {
-  sf::Vector3f right, top, back, cameraPos;
+  Vector3f right, top, back, cameraPos;
 
 public:
-  LookAtMatrix(sf::Vector3f right, sf::Vector3f top, sf::Vector3f back, sf::Vector3f cameraPos);
+  LookAtMatrix(Vector3f right, Vector3f top, Vector3f back, Vector3f cameraPos);
 };
 
 #endif
