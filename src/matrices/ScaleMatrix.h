@@ -3,7 +3,7 @@
 
 #include "Matrix.h"
 
-class ScaleMatrix : Matrix
+class ScaleMatrix : public Matrix
 {
   float kx, ky, kz;
 

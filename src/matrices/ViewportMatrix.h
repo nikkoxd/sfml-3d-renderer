@@ -3,7 +3,7 @@
 
 #include "Matrix.h"
 
-class ViewportMatrix : Matrix
+class ViewportMatrix : public Matrix
 {
   float width, height, x, y, depth;
 

@@ -3,7 +3,7 @@
 
 #include "Matrix.h"
 
-class ProjectionMatrix : Matrix
+class ProjectionMatrix : public Matrix
 {
   float left, right, bottom, top, near, far;
 

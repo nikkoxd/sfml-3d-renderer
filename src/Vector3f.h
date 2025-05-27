@@ -10,8 +10,8 @@ public:
   Vector3f(float x, float y, float z);
   Vector3f(sf::Vector3f other);
 
-  float scalarMultiply(sf::Vector3f other);
-  Vector3f vectorMultiply(sf::Vector3f other);
+  float scalarMul(sf::Vector3f other);
+  Vector3f vectorMul(sf::Vector3f other);
 };
 
 #endif

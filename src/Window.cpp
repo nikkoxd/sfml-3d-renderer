@@ -1,4 +1,6 @@
 #include "Window.h"
+#include "matrices/LookAtMatrix.h"
+#include "matrices/ScaleMatrix.h"
 #include "matrices/ViewportMatrix.h"
 #include "matrices/ProjectionMatrix.h"
 #include <SFML/Graphics/PrimitiveType.hpp>
@@ -16,7 +18,13 @@ Window::Window(sf::VideoMode videoMode, std::string title,
   Vector3f center(0, 0, 0);
 
   Vector3f zAxis = cameraPosition - center;
-  Vector3f xAxis = Vector3f(1, 0, 0).componentWiseMul(zAxis);
+  Vector3f xAxis = Vector3f(1, 0, 0).vectorMul(zAxis);
+  Vector3f yAxis = zAxis.vectorMul(xAxis);
+
+  LookAtMatrix lookAt(xAxis, yAxis, zAxis, cameraPosition);
+  ScaleMatrix scale(0.3, 0.3, 0.3);
+
+  transformationMatrix = viewportMatrix * projectionMatrix * lookAt * scale;
 }
 
 void Window::loop()
