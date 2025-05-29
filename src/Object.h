@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "Vector3f.h"
+#include "Vertex.h"
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System/Vector3.hpp>
 #include <fstream>
@@ -11,10 +11,9 @@ class Object
   std::ifstream file;
 
 public:
-  std::vector<Vector3f> vertices;
-  std::vector<Vector3f> normals;
-  std::vector<sf::Vector2f> tex_coords;
-  std::vector<std::array<std::array<int, 3>, 3>> faces;
+  std::vector<std::array<Vertex, 3>> polygons;
+  float min_x = 1000000, max_x = -1000000, min_y = 1000000, max_y = -1000000,
+        min_z = 1000000, max_z = -1000000;
 
   Object(std::string filename);
 };

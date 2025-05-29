@@ -1,4 +1,5 @@
 #include "Object.h"
+#include "Vertex.h"
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System/Vector3.hpp>
 #include <iostream>
@@ -19,6 +20,9 @@ Object::Object(std::string filename)
   {
     while (std::getline(file, line))
     {
+      std::vector<Vector3f> vertices;
+      std::vector<Vector3f> normals;
+
       std::stringstream ss(line);
       std::string prefix;
 
@@ -29,6 +33,13 @@ Object::Object(std::string filename)
         ss >> vertex.x >> vertex.y >> vertex.z;
 
         vertices.push_back(vertex);
+
+        if (vertex.x < min_x) min_x = vertex.x;
+        if (vertex.x > max_x) max_x = vertex.x;
+        if (vertex.y < min_y) min_y = vertex.y;
+        if (vertex.y > max_y) max_y = vertex.y;
+        if (vertex.z < min_z) min_z = vertex.z;
+        if (vertex.z > max_z) max_z = vertex.z;
       }
       else if (prefix == "vn")
       {
@@ -37,17 +48,10 @@ Object::Object(std::string filename)
 
         normals.push_back(normal);
       }
-      else if (prefix == "vt")
-      {
-        sf::Vector2f tex_coord;
-        ss >> tex_coord.x >> tex_coord.y;
-
-        tex_coords.push_back(tex_coord);
-      }
       else if (prefix == "f")
       {
         std::array<std::string, 3> string_groups;
-        std::array<std::array<int, 3>, 3> face;
+        std::array<Vertex, 3> polygon;
         ss >> string_groups[0] >> string_groups[1] >> string_groups[2];
 
         for (int i = 0; i < 3; i++)
@@ -59,10 +63,10 @@ Object::Object(std::string filename)
           char slash;
 
           group_ss >> values[0] >> slash >> values[1] >> slash >> values[2];
-          face[i] = values;
+          polygon[i] = (Vertex(vertices[values[0] - 1], normals[values[2] - 1]));
         }
 
-        faces.push_back(face);
+        polygons.push_back(polygon);
       }
     }
   }

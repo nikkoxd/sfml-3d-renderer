@@ -11,9 +11,11 @@ class Window
   sf::RenderWindow window;
   Object object;
 
-  float min_x = 1000000, max_x = -1000000, min_y = 1000000, max_y = -1000000,
-        min_z = 1000000, max_z = -1000000;
+  int rotationAngle;
+
   Matrix transformationMatrix;
+  std::vector<std::array<Vertex, 3>> transformedPolygons;
+  void transformPolygons();
 
 public:
   Window(sf::VideoMode videoMode, std::string title,
