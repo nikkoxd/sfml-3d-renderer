@@ -11,11 +11,17 @@ class Window
   sf::RenderWindow window;
   Object object;
 
-  int rotationAngle;
+  int rotationAngle = 0;
+
+  std::vector<std::vector<float>> zBuffer;
 
   Matrix transformationMatrix;
   std::vector<std::array<Vertex, 3>> transformedPolygons;
+
+  void processEvents();
   void transformPolygons();
+  void renderModel();
+  void initializeZBuffer();
 
 public:
   Window(sf::VideoMode videoMode, std::string title,

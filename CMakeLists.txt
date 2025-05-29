@@ -17,7 +17,8 @@ add_executable(main
   src/main.cpp
   src/Object.cpp
   src/Window.cpp
-  src/Vector3f.cpp
+  src/Vector.cpp
+  src/Vertex.cpp
   src/matrices/Matrix.cpp
   src/matrices/LookAtMatrix.cpp
   src/matrices/ProjectionMatrix.cpp

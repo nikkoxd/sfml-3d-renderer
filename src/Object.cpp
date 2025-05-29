@@ -1,7 +1,5 @@
 #include "Object.h"
 #include "Vertex.h"
-#include <SFML/System/Vector2.hpp>
-#include <SFML/System/Vector3.hpp>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -18,18 +16,17 @@ Object::Object(std::string filename)
 
   if (file.is_open())
   {
+    std::vector<Vector> vertices;
+    std::vector<Vector> normals;
     while (std::getline(file, line))
     {
-      std::vector<Vector3f> vertices;
-      std::vector<Vector3f> normals;
-
       std::stringstream ss(line);
       std::string prefix;
 
       ss >> prefix;
       if (prefix == "v")
       {
-        Vector3f vertex;
+        Vector vertex;
         ss >> vertex.x >> vertex.y >> vertex.z;
 
         vertices.push_back(vertex);
@@ -43,7 +40,7 @@ Object::Object(std::string filename)
       }
       else if (prefix == "vn")
       {
-        Vector3f normal;
+        Vector normal;
         ss >> normal.x >> normal.y >> normal.z;
 
         normals.push_back(normal);
@@ -63,7 +60,7 @@ Object::Object(std::string filename)
           char slash;
 
           group_ss >> values[0] >> slash >> values[1] >> slash >> values[2];
-          polygon[i] = (Vertex(vertices[values[0] - 1], normals[values[2] - 1]));
+          polygon[i] = (Vertex(vertices[values[0]], normals[values[2]]));
         }
 
         polygons.push_back(polygon);

@@ -1,7 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-#include "../Vector3f.h"
+#include "../Vector.h"
 #include <array>
 
 class Matrix
@@ -15,7 +15,7 @@ public:
 
   std::array<float, 4> operator[](int i);
   Matrix operator*(Matrix other);
-  Vector3f operator*(Vector3f other);
+  Vector operator*(Vector other);
 };
 
 #endif
